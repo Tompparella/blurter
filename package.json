@@ -21,8 +21,12 @@
   },
   "homepage": "https://github.com/Tompparella/webapp_practical_assignment#readme",
   "dependencies": {
+    "bluebird": "^3.7.2",
     "concurrently": "^5.3.0",
-    "express": "^4.17.1"
+    "cookie-parser": "^1.4.5",
+    "express": "^4.17.1",
+    "mongoose": "^5.11.4",
+    "morgan": "^1.10.0"
   },
   "devDependencies": {
     "nodemon": "^2.0.6"
