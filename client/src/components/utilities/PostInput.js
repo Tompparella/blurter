@@ -1,7 +1,10 @@
+
 import React, { Component } from 'react';
 import './PostInput.css';
+import { BeatLoader } from 'react-spinners';
 
 export class PostForm extends Component {
+
     constructor(props) {
         super(props);
         this.state = {value: ''};
@@ -15,10 +18,29 @@ export class PostForm extends Component {
     }
 
     handleSubmit(event) {
-        alert("A post was submitted: " + this.state.value);
-        event.preventDefault();
-    }
 
+        let fullDate = new Date();
+        let newPost = {
+            poster: "Guest",
+            date: fullDate.getDate()+"/"+(fullDate.getMonth()+1) + "/" + fullDate.getFullYear(),
+            time: fullDate.getHours() + ":" + fullDate.getMinutes(),
+            msg: this.state.value
+        };
+        console.log(JSON.stringify(newPost));
+
+        fetch("/posts/post", {
+            method: "POST",
+            redirect: "follow",
+            headers: { 
+                "Content-type": "application/json"
+            },
+            body: JSON.stringify(newPost)
+        }).then((response) => {
+            if (response.redirected) {
+                window.location.href = response.url;
+            }
+        });
+    }
     render() {
         return (
             <div className="field-container">

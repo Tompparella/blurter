@@ -2,11 +2,15 @@ const express = require("express");
 const app = express();
 const port = 5000;
 
-var mongoose = require("mongoose");
 var path = require("path");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 var Promise = require("bluebird");
+
+var mongoose = require("mongoose");
+
+var postRouter = require("./routes/posts");
+var indexRouter = require("./routes/index");
 
 // Mongoose connection
 var mongoURL = process.env.OPENSHIFT_MONGODB_DB_URL || process.env.MONGO_URL,
@@ -66,12 +70,17 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
+app.use("/", indexRouter);
+app.use("/posts", postRouter);
 
-app.get('/api/posts', (req, res) => { // TODO Tee mongodb
-    const posts = [
-        {id: 1, poster: "Johnny", message: "Hello World!"},
-        {id: 2, poster: "Timothy", message: "This is fun!"}
-    ];
-    res.json(posts);
-}) ;
+app.use(function (err, req, res, next) {
+  // set locals, only providing error in development
+  res.locals.message = err.message;
+  res.locals.error = req.app.get("env") === "development" ? err : {};
+
+  // show error message
+  res.status(err.status || 500);
+  console.log(res.locals.error);
+});
+
 app.listen(port, () => console.log(`Server started on port ${port}`));

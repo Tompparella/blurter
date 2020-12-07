@@ -1,3 +1,5 @@
+
+
 import React, { Component } from "react";
 import './post.css';
 
@@ -5,14 +7,48 @@ class Post extends Component {
     constructor() {
         super();
         this.state = {
-            post: []
+            posts: [],
         }
     }
-
     componentDidMount() {
-        fetch("/api/posts")
+        fetch("/posts/find", {
+            method: "GET"
+        }).then((response) => {
+            response.json().then((data) => {
+
+                if (data == null) {
+                    console.log("No posts found");
+                    return;
+                }
+                console.log(data);
+                let len = data.length;
+
+                for (let i=0; i<len; i++) {
+                    let post = {
+                        creator: data[i].creator,
+                        date: data[i].date,
+                        time: data[i].time,
+                        message: data[i].message
+                    };
+                    this.setState({
+                        posts: this.state.posts.concat(post)
+                    })
+                    console.log(this.state.posts);
+                }
+                /*
+                this.state.id = data[0]._id;
+                this.state.creator = data[0].creator;
+                this.state.date = data[0].date;
+                this.state.time = data[0].time;
+                this.state.message = data[0].message;
+                */
+            });
+        });
+
+        /*
         .then(res => res.json())
         .then(post => this.setState({post}, () => console.log("Post fetched", post)));
+        */
     }
 
     render() {
@@ -20,11 +56,12 @@ class Post extends Component {
             <div className="Post">
                 <h2 className="main-header">Blurts</h2>
                 <ul>
-                    {this.state.post.map(post =>
+                    {this.state.posts.map(post =>
                         <div className="post-container">
-                            <li key={post.id}>{post.poster}
+                            <li className="post-name" key={post.id}>{post.creator}</li>
+                            <li className="post-date">{post.date}</li>
+                            <li className="post-time">{post.time}</li>
                             <li className="post-msg">{post.message}</li>
-                            </li>
                         </div>
                         )}
                 </ul>
