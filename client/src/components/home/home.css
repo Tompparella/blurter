@@ -1,0 +1,17 @@
+.m-top {
+  background: #e8c6ed;
+  border-radius: 5px;
+  color: rgb(87, 87, 87);
+}
+.welcome-msg {
+  margin-top: 10px;
+  margin-left: 20px;
+  margin-bottom: 10px;
+  margin-right: 20px;
+}
+.homepage {
+  color: rgb(141, 117, 139);
+  margin-top: 10px;
+  margin-left: 20px;
+  margin-bottom: 10px;
+}

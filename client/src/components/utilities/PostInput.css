@@ -1,0 +1,43 @@
+.inputField {
+  overflow: scroll;
+  border: 2px solid #e8c6ed;
+  border-radius: 5px;
+  width: 100%;
+  height: 100px;
+  padding: 12px 20px;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  grid-area: input;
+  resize: none;
+  overflow: auto;
+}
+label {
+  font-size: x-large;
+  width: fit-content;
+  grid-area: label;
+}
+.submitBtn {
+  width: fit-content;
+  font-size: x-large;
+  border: 2px solid #e8c6ed;
+  border-radius: 5px;
+  grid-area: submit;
+}
+form {
+  color: rgb(249, 224, 255);
+  display: grid;
+  grid-template-areas:
+    "label label label"
+    "input input input"
+    "submit submit submit";
+  grid-gap: 10px;
+  padding: 10px;
+}
+.field-container {
+  border: 2px solid rgb(198, 175, 199);
+  margin-left: 20%;
+  background: #b296b6;
+  width: 40%;
+  border-radius: 5px;
+}

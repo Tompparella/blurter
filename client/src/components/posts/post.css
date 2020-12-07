@@ -1,0 +1,37 @@
+ul {
+  list-style: none;
+  padding: 0;
+  width: 30;
+  margin: auto;
+}
+.main-header {
+  color: rgb(141, 117, 139);
+}
+li {
+  color: rgb(141, 117, 139);
+  font-size: 1, 3rem;
+  line-height: 2rem;
+  border-bottom: 2px solid #777;
+  border-radius: 5px;
+}
+div.Post {
+  border: 2px solid rgb(253, 224, 255);
+  margin: auto;
+  margin-top: 20px;
+  padding: 10px;
+  width: 50%;
+  border-radius: 5px;
+  color: rgb(249, 224, 255);
+  background: #e8c6ed;
+}
+.post-container {
+  padding: 10px;
+  background: rgb(202, 168, 200);
+  border-radius: 5px;
+  margin-bottom: 5px;
+  border: 3px solid rgb(253, 224, 255);
+}
+.post-msg {
+  font-size: large;
+  color: azure;
+}

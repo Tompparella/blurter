@@ -1,0 +1,33 @@
+img {
+  grid-area: picture;
+  border-radius: 15px;
+  padding: 10px;
+}
+.name {
+  margin-top: 10%;
+  margin-left: 5px;
+  font-size: 90%;
+  grid-area: name;
+}
+.motto {
+  margin-top: 0;
+  margin-left: 5px;
+  font-size: 80%;
+  grid-area: motto;
+}
+.profile {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-areas:
+    "picture name"
+    "picture  motto";
+}
+.container {
+  position: sticky;
+  width: fit-content;
+  padding: 5px;
+  border-radius: 1%;
+  background-color: #c6a0ca;
+  border: 2px solid rgb(242, 202, 238);
+  color: rgb(253, 244, 255);
+}
