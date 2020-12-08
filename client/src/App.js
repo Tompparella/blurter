@@ -4,6 +4,7 @@ import Post from './components/posts/post';
 import {Home} from './components//home/home';
 import { Profile } from './components/home/profile';
 import { PostForm } from './components/utilities/PostInput';
+import { Beater } from "./components/utilities/Beater";
 
 function App() {
   return (

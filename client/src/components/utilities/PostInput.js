@@ -1,7 +1,13 @@
 
 import React, { Component } from 'react';
 import './PostInput.css';
+import { css } from "@emotion/core";
 import { BeatLoader } from 'react-spinners';
+
+const override = css`
+    display: block;
+    border-color: red;
+`;
 
 export class PostForm extends Component {
 
@@ -43,13 +49,24 @@ export class PostForm extends Component {
     }
     render() {
         return (
-            <div className="field-container">
-                <form onSubmit={this.handleSubmit}>
-                    <label>What's on your mind?</label>
-                    <textarea className="inputField" type="text" value={this.state.value} onChange={this.handleChange}/>
-                    <input className="submitBtn" type="submit" value="Blurt"/>
-                </form>
+            <div>
+                <div className="field-container">
+                    <form onSubmit={this.handleSubmit}>
+                        <label>What's on your mind?</label>
+                        <textarea className="inputField" type="text" value={this.state.value} onChange={this.handleChange}/>
+                        <input className="submitBtn" type="submit" value="Blurt"/>
+                    </form>
+                </div>
+                <div className="loading">
+                    <BeatLoader
+                        css={override}
+                        size={25}
+                        color={"white"}
+                        loading={this.state.loading}
+                    />
+                </div>
             </div>
+            
         );
     }
 }
