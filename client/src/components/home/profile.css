@@ -27,7 +27,8 @@ img {
   width: fit-content;
   padding: 5px;
   border-radius: 1%;
-  background-color: #c6a0ca;
-  border: 2px solid rgb(242, 202, 238);
-  color: rgb(253, 244, 255);
+  background-color: rgb(231, 187, 227);
+  border: 2px solid rgb(200, 132, 166);
+  color: white;
+  text-shadow: -1px 3px 0 rgb(204, 213, 255);
 }

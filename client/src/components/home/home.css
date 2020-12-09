@@ -1,7 +1,10 @@
 .m-top {
-  background: #e8c6ed;
+  background: rgb(200, 132, 166);
   border-radius: 5px;
-  color: rgb(87, 87, 87);
+  border: 3px solid rgb(204, 213, 255);
+
+  color: rgb(35, 201, 255);
+  text-shadow: -1px 3px 0 rgb(204, 213, 255);
 }
 .welcome-msg {
   margin-top: 10px;
@@ -10,7 +13,7 @@
   margin-right: 20px;
 }
 .homepage {
-  color: rgb(141, 117, 139);
+  color: rgb(124, 198, 254);
   margin-top: 10px;
   margin-left: 20px;
   margin-bottom: 10px;

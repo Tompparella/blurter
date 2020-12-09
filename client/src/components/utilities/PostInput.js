@@ -13,7 +13,9 @@ export class PostForm extends Component {
 
     constructor(props) {
         super(props);
-        this.state = {value: ''};
+        this.state = {
+            value: '',
+            loading: false};
 
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -24,7 +26,7 @@ export class PostForm extends Component {
     }
 
     handleSubmit(event) {
-
+        this.setState({loading: true});
         let fullDate = new Date();
         let newPost = {
             poster: "Guest",
@@ -45,6 +47,7 @@ export class PostForm extends Component {
             if (response.redirected) {
                 window.location.href = response.url;
             }
+            this.setState({loading: false});
         });
     }
     render() {

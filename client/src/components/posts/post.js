@@ -20,10 +20,9 @@ class Post extends Component {
                     console.log("No posts found");
                     return;
                 }
-                console.log(data);
+    
                 let len = data.length;
-
-                for (let i=0; i<len; i++) {
+                for (let i=(len-1); i>=0; i--) {
                     let post = {
                         creator: data[i].creator,
                         date: data[i].date,

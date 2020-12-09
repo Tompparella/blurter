@@ -1,6 +1,8 @@
 const express = require("express");
 const app = express();
-const port = 5000;
+const cors = require("cors");
+require("dotenv").config();
+const port = process.env.PORT || 5000;
 
 var path = require("path");
 var cookieParser = require("cookie-parser");
@@ -11,12 +13,13 @@ var mongoose = require("mongoose");
 
 var postRouter = require("./routes/posts");
 var indexRouter = require("./routes/index");
+var userRouter = require("./routes/userRouter");
 
 // Mongoose connection
 var mongoURL = process.env.OPENSHIFT_MONGODB_DB_URL || process.env.MONGO_URL,
   mongoURLLabel = "";
 
-var mongoURL = "mongodb+srv://Tomppa:TestiSalis123@main.q3pip.mongodb.net/<dbname>?retryWrites=true&w=majority";
+var mongoURL = process.env.MONGODB_CONNECTION_STRING;
 
   // For local dev
 if (mongoURL == null) {
@@ -69,9 +72,12 @@ app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
+app.use(cors());
+
 
 app.use("/", indexRouter);
 app.use("/posts", postRouter);
+app.use("/users", userRouter);
 
 app.use(function (err, req, res, next) {
   // set locals, only providing error in development
