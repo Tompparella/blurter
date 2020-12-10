@@ -41,6 +41,17 @@ exports.find = function (req, res, next) {
   });
 };
 
+exports.delete = function (req, res) {
+  console.log(req.user);
+  try {
+    /*const deletedPost = Post.findByIdAndDelete(req.user);
+    res.json(deletedPost);*/
+
+  } catch (err) {
+    return res.status(500).json({ error: err });
+  }
+};
+
 // User handling
 
 exports.register = function (req, res) {
@@ -97,10 +108,38 @@ exports.login = function (req, res) {
       res.status(400).json({ msg: "Invalid credentials." });
     }
 
-    const token = jwt.sign({ id: user._id });
+    const token = jwt.sign({ id: user._id }, process.env.JWT_TOKEN);
+    res.json({
+      token,
+      user: {
+        id: user._id,
+        username: user.userName,
+      }
+    })
 
   } catch (err) {
     res.status(500).json({ error: err.message });
+  }
+}
+
+exports.tokenCheck = function (req, res) {
+  try {
+    const token = req.header("x-auth-token");
+    if (!token) {
+      return res.json(false);
+    }
+    const verified = jwt.verify(token, process.env.JWT_TOKEN);
+    if (!verified) {
+      return res.json(false);
+    }
+    const user = User.findById(verified.id);
+    if(!user) {
+      return res.json(false);
+    }
+    return res.json(true);
+    
+  } catch (err) {
+    
   }
 }
 
