@@ -1,7 +1,5 @@
 .prof-header {
   margin-top: 20px;
-  margin-left: 20px;
-  padding-right: 50%;
 }
 .postInput {
   margin-top: 50px;
@@ -27,8 +25,4 @@
   to {
     transform: rotate(360deg);
   }
-}
-
-body {
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }

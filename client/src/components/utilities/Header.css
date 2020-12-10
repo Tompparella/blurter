@@ -1,0 +1,43 @@
+.m-top {
+  display: grid;
+  grid-template-areas:
+    "msg msg"
+    "home btns";
+  align-items: center;
+  justify-content: space-between;
+  background: rgb(200, 132, 166);
+  color: #23c9ff;
+  text-shadow: -1px 3px 0 rgb(204, 213, 255);
+}
+.welcome-msg {
+  padding: 0 1rem;
+  grid-area: msg;
+  margin-left: 10px;
+  margin-bottom: 0;
+  font-size: xx-large;
+  margin-top: 10px;
+}
+.homepage {
+  padding: 0 1rem;
+  grid-area: home;
+  font-size: x-large;
+  margin-left: 25px;
+  margin-top: 0;
+  color: rgb(124, 198, 254);
+}
+
+button {
+  margin-bottom: 2px;
+  grid-area: btns;
+  display: flex;
+  height: 100%;
+  width: 100%;
+  border: none;
+  background: rgb(181, 81, 132);
+  color: white;
+  border-radius: 5px;
+}
+button:hover {
+  background: rgb(255, 194, 225);
+  color: black;
+}

@@ -1,15 +1,13 @@
-import './App.css';
-import Post from './components/posts/post';
-import {Home} from './components//home/home';
-import { Profile } from './components/home/profile';
-import { PostForm } from './components/utilities/PostInput';
-import { Beater } from "./components/utilities/Beater";
+import './main.css';
+import Post from '../posts/post';
+import { Profile } from '../home/profile';
+import { PostForm } from '../utilities/PostInput';
+import { Beater } from "../utilities/Beater";
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <Home/>
         <div className="prof-header">
           <Profile/>
         </div>

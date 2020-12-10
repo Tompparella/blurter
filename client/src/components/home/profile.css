@@ -23,6 +23,7 @@ img {
     "picture  motto";
 }
 .container {
+  margin: auto;
   position: sticky;
   width: fit-content;
   padding: 5px;

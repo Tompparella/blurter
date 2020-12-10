@@ -1,27 +1,21 @@
-import './App.css';
-import Post from './components/posts/post';
-import {Home} from './components//home/home';
-import { Profile } from './components/home/profile';
-import { PostForm } from './components/utilities/PostInput';
-import { Beater } from "./components/utilities/Beater";
+import Main from "./components/pages/main";
+import Login from "./components/pages/login";
+import Register from "./components/pages/register";
+import { BrowserRouter, Switch, Route } from "react-router-dom";
+import Header from "./components/utilities/Header";
+import React from 'react';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <Home/>
-        <div className="prof-header">
-          <Profile/>
-        </div>
-        <div className="postInput">
-          <PostForm/>
-        </div>
-        <div className="post">
-          <Post/>
-        </div>
-      </header>
-    </div>
-  );
+  return <>
+    <BrowserRouter>
+      <Header id="header"/>
+      <Switch>
+        <Route exact path="/" component={Main}/>
+        <Route path="/login" component={Login}/>
+        <Route path="/register" component={Register}/>
+      </Switch>
+    </BrowserRouter>
+    </>
 }
 
 export default App;
