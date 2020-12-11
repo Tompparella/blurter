@@ -56,11 +56,11 @@ class Post extends Component {
                 <h2 className="main-header">Blurts</h2>
                 <ul>
                     {this.state.posts.map(post =>
-                        <div className="post-container">
-                            <li className="post-name" key={post.id}>{post.creator}</li>
-                            <li className="post-date">{post.date}</li>
-                            <li className="post-time">{post.time}</li>
-                            <li className="post-msg">{post.message}</li>
+                        <div className="post-container" key={post.id}>
+                            <li className="post-name" key={post.creator}>{post.creator}</li>
+                            <li className="post-date" key={post.date}>{post.date}</li>
+                            <li className="post-time" key={post.time}>{post.time}</li>
+                            <li className="post-msg" key={post.message}>{post.message}</li>
                         </div>
                         )}
                 </ul>

@@ -13,7 +13,7 @@ var mongoose = require("mongoose");
 
 var postRouter = require("./routes/posts");
 var indexRouter = require("./routes/index");
-var userRouter = require("./routes/userRouter");
+var userRouter = require("./routes/users");
 
 // Mongoose connection
 var mongoURL = process.env.OPENSHIFT_MONGODB_DB_URL || process.env.MONGO_URL,

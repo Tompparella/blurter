@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/Tompparella/webapp_practical_assignment#readme",
   "dependencies": {
+    "axios": "^0.21.0",
     "bcrypt": "^5.0.0",
     "bluebird": "^3.7.2",
     "concurrently": "^5.3.0",

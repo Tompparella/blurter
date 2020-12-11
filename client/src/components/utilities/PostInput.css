@@ -24,6 +24,14 @@ label {
   border-radius: 5px;
   grid-area: submit;
   margin: auto;
+  color: rgb(141, 93, 117);
+  border: 2px dotted rgb(218, 170, 195);
+}
+
+.submitBtn:hover {
+  background: rgb(209, 170, 211);
+  color: rgb(255, 255, 255);
+  border: 2px dotted rgb(255, 255, 255);
 }
 form {
   color: rgb(249, 224, 255);

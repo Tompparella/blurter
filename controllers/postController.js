@@ -143,6 +143,14 @@ exports.tokenCheck = function (req, res) {
   }
 }
 
+exports.userCheck = function (req,res) {
+  const user = User.findById(req.user);
+  res.json({
+    userName: user.userName,
+    id: user._id
+  });
+};
+
 /*
 exports.index = function (req, res, next) {
   Game.findOne({gameId: 1}).exec(function (err, game) {
