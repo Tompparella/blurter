@@ -1,0 +1,9 @@
+body {
+  background-color: rgb(35, 201, 255);
+}
+h2 {
+  padding: 5px;
+  border-radius: 5px;
+  width: fit-content;
+  background: rgb(195, 231, 243);
+}

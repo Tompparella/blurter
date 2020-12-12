@@ -33,7 +33,7 @@ label {
   color: rgb(255, 255, 255);
   border: 2px dotted rgb(255, 255, 255);
 }
-form {
+.input-form {
   color: rgb(249, 224, 255);
   display: grid;
   grid-template-areas:

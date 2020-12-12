@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
+var Schema = mongoose.Schema;
 
-const UserSchema = new mongoose.Schema({
+const UserSchema = new Schema({
     userName: {
         unique: true,
         required: true,
@@ -15,10 +16,6 @@ const UserSchema = new mongoose.Schema({
         required: true,
         type: String,
         default: ''
-    },
-    isDeleted: {
-        type: Boolean,
-        default: false
     }
 });
 

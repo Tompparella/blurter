@@ -9,6 +9,6 @@ router.post("/login", postController.login);
 
 router.post("/tokenIsValid", postController.tokenCheck);
 
-router.get("/", auth, postController.userCheck);
+router.get("/", auth, postController.index);
 
 module.exports = router;

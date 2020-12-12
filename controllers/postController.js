@@ -8,8 +8,12 @@ const jwt = require("jsonwebtoken");
 
 // Index handling
 
-exports.index = function (req, res, next) {
-  res.render("index");
+exports.index = async function (req, res) {
+  const user = await User.findById(req.user);
+  res.json({
+    userName: user.userName,
+    id: user._id
+  });
 };
 
 // Post handling
@@ -36,7 +40,6 @@ exports.find = function (req, res, next) {
       res.send("Something went wrong!");
       next();
     }
-    console.log(typeof(posts));
     res.end(JSON.stringify(posts));
   });
 };
@@ -54,43 +57,52 @@ exports.delete = function (req, res) {
 
 // User handling
 
-exports.register = function (req, res) {
-  const { userName, motto, password } = req.body;
+exports.register = async function (req, res) {
+
+  try {
+
+  console.log(req.body);
+
+  let { userName , motto , password, passwordCheck } = req.body;
+
 
   // Authenticating
 
-  try {
-    if (!userName || !password) {
+    if (!userName || !password || !passwordCheck) {
       return res.status(400).json({msg: "Please give both username and password." });
     }
     if (password.length < 8) {
       return res.status(400).json({msg: "The password must be at least 8 characters long" });
     }
 
-    const existingUser = User.findOne({ userName: userName });
+    if (password !== passwordCheck) {
+      return res.status(400).json({msg: "The passwords don't match" });
+    }
+
+    const existingUser = await User.findOne({ userName: userName });
+
     if (existingUser) {
       return res.status(400).json({ msg: "That username is already taken!" });
     }
 
-    const salt = bcrypt.genSalt();
-    const hash = bcrypt.hash(password, salt);
-    console.log(hash);
+    const salt = await bcrypt.genSalt();
+    const hash = await bcrypt.hash(password, salt);
 
-    const newUser = new User( {
+    const newUser = new User({
       userName: userName,
       motto: motto,
       password: hash
     });
 
-    const savedUser = newUser.save();
+    const savedUser = await newUser.save();
     res.json(savedUser);
 
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
-}
+};
 
-exports.login = function (req, res) {
+exports.login = async function (req, res) {
   try {
     const { userName, password } = req.body;
 
@@ -98,14 +110,16 @@ exports.login = function (req, res) {
       res.status(400).json({ msg: "Please enter both username and password." });
     }
 
-    const user = User.findOne({ userName: userName });
+    const user = await User.findOne({ userName: userName });
+    console.log("Current user: " + user);
+
     if (!user) {
-      res.status(400).json({ msg: "No account with that username is registered!" });
+      return res.status(400).json({ msg: "No account with that username is registered!" });
     }
 
-    const matched = bcrypt.compare(password, user.password);
+    const matched = await bcrypt.compare(password, user.password);
     if (!matched) {
-      res.status(400).json({ msg: "Invalid credentials." });
+      return res.status(400).json({ msg: "Invalid credentials." });
     }
 
     const token = jwt.sign({ id: user._id }, process.env.JWT_TOKEN);
@@ -114,15 +128,15 @@ exports.login = function (req, res) {
       user: {
         id: user._id,
         username: user.userName,
-      }
-    })
+      },
+    });
 
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
 }
 
-exports.tokenCheck = function (req, res) {
+exports.tokenCheck = async function (req, res) {
   try {
     const token = req.header("x-auth-token");
     if (!token) {
@@ -132,17 +146,17 @@ exports.tokenCheck = function (req, res) {
     if (!verified) {
       return res.json(false);
     }
-    const user = User.findById(verified.id);
+    const user = await User.findById(verified.id);
     if(!user) {
       return res.json(false);
     }
     return res.json(true);
     
   } catch (err) {
-    
+    res.status(500).json({ error: err.message });
   }
 }
-
+/*
 exports.userCheck = function (req,res) {
   const user = User.findById(req.user);
   res.json({
@@ -150,7 +164,7 @@ exports.userCheck = function (req,res) {
     id: user._id
   });
 };
-
+*/
 /*
 exports.index = function (req, res, next) {
   Game.findOne({gameId: 1}).exec(function (err, game) {

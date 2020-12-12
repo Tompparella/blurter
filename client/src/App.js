@@ -5,7 +5,6 @@ import { BrowserRouter, Switch, Route } from "react-router-dom";
 import Header from "./components/utilities/Header";
 import React, { useState, useEffect } from 'react';
 import UserContext from "./context/userContext";
-import { token } from "morgan";
 
 function App() {
 
@@ -27,22 +26,28 @@ function App() {
         redirect: "follow",
         headers: { 
             "x-auth-token": token
-        } }
-    );
+        }}).then((response) => response.json())
+        .then((responseData) => {
+            return responseData;
+        });
 
-    console.log(tokenRes);
+    console.log("Token: " + tokenRes);
 
-    if (tokenRes.data) {
-      const userRes = fetch("/users/", {
+    if (tokenRes) {
+      const userRes = await fetch("/users/", {
         method: "GET",
         redirect: "follow",
         headers: {
           "x-auth-token": token
         }
+      }).then((response) => response.json())
+      .then((responseData) => {
+          return responseData;
       });
+
       setUserData({
         token,
-        user: userRes.data
+        user: userRes
       });
     }
   }

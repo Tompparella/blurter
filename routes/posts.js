@@ -3,7 +3,7 @@ var router = express.Router();
 var postController = require("../controllers/postController");
 const auth = require("../auth");
 
-router.get("/", postController.index);
+router.get("/", auth, postController.index);
 
 router.post("/post", postController.post);
 router.get("/find", postController.find);

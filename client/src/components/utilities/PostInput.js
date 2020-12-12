@@ -54,7 +54,7 @@ export class PostForm extends Component {
         return (
             <div>
                 <div className="field-container">
-                    <form onSubmit={this.handleSubmit}>
+                    <form className="input-form" onSubmit={this.handleSubmit}>
                         <label>What's on your mind?</label>
                         <textarea className="inputField" type="text" value={this.state.value} onChange={this.handleChange}/>
                         <input className="submitBtn" type="submit" value="Blurt"/>
