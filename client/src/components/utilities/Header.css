@@ -3,41 +3,43 @@
   grid-template-areas:
     "msg msg"
     "home btns";
-  align-items: center;
   justify-content: space-between;
-  background: rgb(200, 132, 166);
+  border-bottom: 3px solid black;
+  border-top: 3px solid black;
+  background: rgba(255, 229, 29, 0.933);
   color: #23c9ff;
-  text-shadow: -1px 3px 0 rgb(204, 213, 255);
+  text-shadow: 2px 0 0 #000000, -2px 0 0 #000000, 0 2px 0 #000000,
+    0 -2px 0 #000000, 1px 1px #000000, -1px -1px 0 #000000, -1px 1px 0 #000000;
 }
 .welcome-msg {
   padding: 0 1rem;
   grid-area: msg;
   margin-left: 10px;
   margin-bottom: 0;
-  font-size: xx-large;
+  font-size: 2.5rem;
   margin-top: 10px;
 }
 .homepage {
+  text-decoration: overline;
   padding: 0 1rem;
   grid-area: home;
-  font-size: x-large;
+  font-size: 2rem;
   margin-left: 25px;
   margin-top: 0;
   color: rgb(124, 198, 254);
 }
 
 button {
-  margin-bottom: 2px;
   grid-area: btns;
-  display: flex;
-  height: 100%;
+  margin: auto;
+  display: inline-block;
+  height: 40px;
   width: 100%;
   border: none;
-  background: rgb(181, 81, 132);
+  background: #96a701;
   color: white;
-  border-radius: 5px;
 }
 button:hover {
-  background: rgb(255, 194, 225);
+  background: rgb(191, 189, 128);
   color: black;
 }

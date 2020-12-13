@@ -1,9 +1,42 @@
+html,
 body {
   background-color: rgb(35, 201, 255);
 }
-h2 {
-  padding: 5px;
+#page-title {
+  margin: auto;
+  padding: 10px;
+  margin-top: 20px;
+  margin-bottom: 20px;
   border-radius: 5px;
   width: fit-content;
-  background: rgb(195, 231, 243);
+  border: 3px solid black;
+  background: rgb(255, 255, 255);
+}
+.page {
+  width: auto;
+  height: 100vh;
+  z-index: 0;
+  padding: 10px;
+  position: relative;
+  background-image: url("../../pictures/comic-background.png");
+  background-size: cover;
+}
+.page::after {
+  position: absolute;
+  content: "";
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background-color: rgba(0, 91, 160, 0.5);
+}
+#inputForm {
+  display: flex;
+  margin: auto;
+  width: fit-content;
+  padding: 20px;
+  border: 3px solid black;
+  border-radius: 5px;
+  background: rgb(35, 201, 255);
 }

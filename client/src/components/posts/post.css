@@ -5,30 +5,32 @@ ul {
   margin: auto;
 }
 .main-header {
-  color: rgb(141, 117, 139);
+  color: rgb(255, 255, 255);
+  text-shadow: 2px 0 0 #000000, -2px 0 0 #000000, 0 2px 0 #000000,
+    0 -2px 0 #000000, 1px 1px #000000, -1px -1px 0 #000000, -1px 1px 0 #000000;
 }
 li {
-  color: rgb(141, 117, 139);
+  color: rgb(255, 255, 255);
   font-size: 1, 3rem;
   line-height: 2rem;
   border-radius: 5px;
 }
 div.Post {
-  border: 2px solid rgb(253, 224, 255);
+  border: 3px solid rgb(0, 0, 0);
   margin: auto;
   margin-top: 20px;
   padding: 10px;
   width: 80%;
   border-radius: 5px;
-  color: rgb(249, 224, 255);
-  background: #e8c6ed;
+  color: rgb(0, 0, 0);
+  background: rgb(102, 214, 255);
 }
 .post-container {
   padding: 10px;
-  background: rgb(202, 168, 200);
+  background: rgb(90, 146, 189);
   border-radius: 5px;
   margin-bottom: 5px;
-  border: 3px solid rgb(253, 224, 255);
+  border: 3px solid rgb(0, 0, 0);
   display: grid;
   grid-template-areas:
     "name name time date"
@@ -40,6 +42,8 @@ div.Post {
   grid-area: msg;
 }
 .post-name {
+  text-shadow: 1px 0 0 #000000, -1px 0 0 #000000, 0 1px 0 #000000,
+    0 -1px 0 #000000, 1px 1px #000000, -1px -1px 0 #000000, -1px 1px 0 #000000;
   align-self: left;
   grid-area: name;
 }

@@ -28,8 +28,9 @@ img {
   width: fit-content;
   padding: 5px;
   border-radius: 1%;
-  background-color: rgb(231, 187, 227);
-  border: 2px solid rgb(200, 132, 166);
+  background-color: rgb(102, 214, 255);
+  border: 3px solid rgb(0, 0, 0);
   color: white;
-  text-shadow: -1px 3px 0 rgb(204, 213, 255);
+  text-shadow: 2px 0 0 #000000, -2px 0 0 #000000, 0 2px 0 #000000,
+    0 -2px 0 #000000, 1px 1px #000000, -1px -1px 0 #000000, -1px 1px 0 #000000;
 }

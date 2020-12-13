@@ -1,6 +1,7 @@
 import React, {useState, useContext} from 'react';
 import UserContext from "../../context/userContext";
 import { useHistory } from "react-router-dom";
+import "./authentication.css";
 
 export default function Register() {
 
@@ -61,8 +62,8 @@ export default function Register() {
 
     return (
         <div className="page">
-            <h2>Register</h2>
-            <form onSubmit={submit}>
+            <h2 id="page-title">Register</h2>
+            <form id="inputForm" onSubmit={submit}>
                 <label htmlFor="register-email">Username</label>
                 <input id="register-username" type="username" onChange={(u) => setUserName(u.target.value)}/>
 

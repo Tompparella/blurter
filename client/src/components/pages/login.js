@@ -44,8 +44,8 @@ export default function Login() {
 
     return (
         <div className="page">
-            <h2>Login</h2>
-            <form onSubmit={submit}>
+            <h2 id="page-title">Login</h2>
+            <form id="inputForm" onSubmit={submit}>
                 <label htmlFor="login-username">Username</label>
                 <input id="login-username" type="username" onChange={(u) => setUserName(u.target.value)}/>
 
