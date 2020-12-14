@@ -49,6 +49,7 @@ function App() {
         token,
         user: userRes
       });
+      //console.log("Userdata: " + userData.user.userName);
     }
   }
 

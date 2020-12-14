@@ -19,20 +19,22 @@ export default function Register() {
 
         try {
             let newUser = { userName, motto, password, passwordCheck };
-            await fetch("/users/register", {
+            let regRes = await fetch("/users/register", {
                 method: "POST",
                 redirect: "follow",
                 headers: {
                     "Content-type": "application/json"
                 },
                 body: JSON.stringify(newUser)
-            });/*.then((response) => {
-                if (response.ok) {
-                    console.log(response.json());
-                  } else {
-                      throw new Error("Something went wrong...");
-                  }
-            });*/
+            }).then((response) => response.json())
+            .then((responseData) => {
+                return responseData;
+            });
+
+            if (regRes.msg !== undefined) {
+                alert(regRes.msg);
+                return;
+            }
 
             let logUser = { userName, password };
             const loginRes = await fetch("/users/login", {
@@ -62,19 +64,19 @@ export default function Register() {
 
     return (
         <div className="page">
-            <h2 id="page-title">Register</h2>
+            <h2 id="page-title"> Register </h2>
             <form id="inputForm" onSubmit={submit}>
-                <label htmlFor="register-email">Username</label>
+                <label htmlFor="register-email"> Username </label>
                 <input id="register-username" type="username" onChange={(u) => setUserName(u.target.value)}/>
 
-                <label htmlFor="register-password">Password</label>
+                <label htmlFor="register-password"> Password </label>
                 <input id="register-password" type="password" onChange={(p) => setPassword(p.target.value)}/>
                 <input type="password" placeholder="Verify password" onChange={(pc) => setPasswordCheck(pc.target.value)}/>
 
-                <label htmlFor="register-motto">Motto</label>
+                <label htmlFor="register-motto"> Motto </label>
                 <input id="register-motto" type="text" onChange={(m) => setMotto(m.target.value)}/>
 
-                <input type="submit" value="Register"/>
+                <input id="submitBtn" type="submit" value="Register"/>
             </form>
         </div>
     )

@@ -29,6 +29,11 @@ export default function Login() {
                 return responseData;
             });
 
+            if(loginRes.token === undefined) {
+                alert(loginRes.msg);
+                return;
+            }
+
             setUserData({
                 token: loginRes.token,
                 user: loginRes.user
@@ -46,13 +51,13 @@ export default function Login() {
         <div className="page">
             <h2 id="page-title">Login</h2>
             <form id="inputForm" onSubmit={submit}>
-                <label htmlFor="login-username">Username</label>
+                <label htmlFor="login-username">Username </label>
                 <input id="login-username" type="username" onChange={(u) => setUserName(u.target.value)}/>
 
-                <label htmlFor="login-password">Password</label>
+                <label htmlFor="login-password"> Password </label>
                 <input id="login-password" type="password" onChange={(p) => setPassword(p.target.value)}/>
 
-                <input type="submit" value="Login"/>
+                <input id="submitBtn" type="submit" value="Login"/>
             </form>
         </div>
     )

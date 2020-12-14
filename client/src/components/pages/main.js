@@ -2,7 +2,6 @@ import './main.css';
 import Post from '../posts/post';
 import { Profile } from '../home/profile';
 import { PostForm } from '../utilities/PostInput';
-import { Beater } from "../utilities/Beater";
 
 function App() {
   return (
