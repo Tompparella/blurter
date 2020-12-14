@@ -1,18 +1,16 @@
 img {
   grid-area: picture;
-  border-radius: 15px;
-  padding: 10px;
+  border-radius: 7px;
+  border: 2px solid black;
+  margin: auto;
 }
 .name {
-  margin-top: 10%;
-  margin-left: 5px;
-  font-size: 90%;
+  font-size: 1.5rem;
   grid-area: name;
 }
 .motto {
   margin-top: 0;
-  margin-left: 5px;
-  font-size: 80%;
+  font-size: 1rem;
   grid-area: motto;
 }
 .profile {

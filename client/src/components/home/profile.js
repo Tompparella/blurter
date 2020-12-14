@@ -15,30 +15,23 @@ export class Profile extends Component {
     }
 
     updateState(user) {
-        console.log(user);
         if (user.userData.user !== undefined && (user.userData.user.userName !== this.state.username)) {
-            console.log("Update");
-            console.log(user);
             this.setState({
                 isLoaded: true,
                 username: user.userData.user.userName,
                 motto: user.userData.user.motto,
             });
-            console.log(this.state);
         }
     }
 
     componentDidMount() {
         let user = this.context;
-        console.log(user);
         if (user.userData.user !== undefined) {
-            console.log(user);
             this.setState({
                 isLoaded: true,
                 username: user.userData.user.userName,
                 motto: user.userData.user.motto
             });
-            console.log(this.state);
         }
     }
 

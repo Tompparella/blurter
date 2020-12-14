@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import './PostInput.css';
 import { css } from "@emotion/core";
 import { BeatLoader } from 'react-spinners';
+import UserContext from "../../context/userContext";
 
 const override = css`
     display: block;
@@ -10,6 +11,7 @@ const override = css`
 `;
 
 export class PostForm extends Component {
+    static contextType = UserContext;
 
     constructor(props) {
         super(props);
@@ -26,12 +28,21 @@ export class PostForm extends Component {
     }
 
     handleSubmit(event) {
+        let creator = "Guest";
+        if (this.context.userData.user !== undefined) {
+            creator = this.context.userData.user.userName;
+        }
         this.setState({loading: true});
         let fullDate = new Date();
+        let minutes = fullDate.getMinutes();
+        console.log(parseInt(minutes));
+        if (parseInt(minutes) < 10) {
+            minutes = "0" + minutes;
+        }
         let newPost = {
-            poster: "Guest",
+            poster: creator,
             date: fullDate.getDate()+"/"+(fullDate.getMonth()+1) + "/" + fullDate.getFullYear(),
-            time: fullDate.getHours() + ":" + fullDate.getMinutes(),
+            time: fullDate.getHours() + ":" + minutes,
             msg: this.state.value
         };
         console.log(JSON.stringify(newPost));

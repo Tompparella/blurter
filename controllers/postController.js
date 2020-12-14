@@ -46,10 +46,12 @@ exports.find = function (req, res, next) {
 };
 
 exports.delete = function (req, res) {
-  console.log(req.user);
+  console.log();
   try {
-    /*const deletedPost = Post.findByIdAndDelete(req.user);
-    res.json(deletedPost);*/
+    Post.deleteOne({_id: req.body.id}).then((response) => {
+      console.log("Post deleted!");
+      res.end();
+    });
 
   } catch (err) {
     return res.status(500).json({ error: err });

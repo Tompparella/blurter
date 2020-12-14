@@ -7,6 +7,6 @@ router.get("/", auth, postController.index);
 
 router.post("/post", postController.post);
 router.get("/find", postController.find);
-router.get("/delete", auth, postController.delete);
+router.post("/delete", auth, postController.delete);
 
 module.exports = router;

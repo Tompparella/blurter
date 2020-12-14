@@ -33,8 +33,8 @@ div.Post {
   border: 3px solid rgb(0, 0, 0);
   display: grid;
   grid-template-areas:
-    "name name time date"
-    "msg msg msg msg";
+    "name name time date delete"
+    "msg msg msg msg msg";
 }
 .post-msg {
   font-size: large;
@@ -54,4 +54,17 @@ div.Post {
 .post-time {
   font-size: medium;
   grid-area: time;
+}
+.deleteBtn {
+  margin-right: 0;
+  grid-area: delete;
+  width: fit-content;
+  height: fit-content;
+  background: rgb(192, 11, 11);
+  color: rgb(0, 0, 0);
+}
+.deleteBtn:hover {
+  background: rgb(36, 0, 0);
+  color: rgb(255, 255, 255);
+  border: 2px solid rgb(255, 255, 255);
 }

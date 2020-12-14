@@ -41,6 +41,7 @@ export default function Login() {
 
             localStorage.setItem("auth-token", loginRes.token);
             history.push("/");
+            window.location.reload(false);
         } catch (err) {
             console.log(err);
             return;
