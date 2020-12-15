@@ -30,39 +30,41 @@ export class PostForm extends Component {
 
     // Submits the created 'Blurt'. If the user's not logged in, gives the post default information as Guest user.
     handleSubmit(event) {
-        let creator = "Guest";
-        if (this.context.userData.user !== undefined) {
-            creator = this.context.userData.user.userName;
-        }
-        this.setState({loading: true});
-        let fullDate = new Date();
-        let minutes = fullDate.getMinutes();
-        console.log(parseInt(minutes));
-        if (parseInt(minutes) < 10) {
-            minutes = "0" + minutes;
-        }
-        let newPost = {
-            poster: creator,
-            date: fullDate.getDate()+"/"+(fullDate.getMonth()+1) + "/" + fullDate.getFullYear(),
-            time: fullDate.getHours() + ":" + minutes,
-            msg: this.state.value
-        };
-        console.log(JSON.stringify(newPost));
-
-        // Posts the new 'Blurt' to the database.
-        fetch("/posts/post", {
-            method: "POST",
-            redirect: "follow",
-            headers: { 
-                "Content-type": "application/json"
-            },
-            body: JSON.stringify(newPost)
-        }).then((response) => {
-            if (response.redirected) {
-                window.location.href = response.url;
+        if (this.state.value.length > 10 && this.state.value.length <= 500) {
+            let creator = "Guest";
+            if (this.context.userData.user !== undefined) {
+                creator = this.context.userData.user.userName;
             }
-            this.setState({loading: false});
-        });
+            this.setState({loading: true});
+            let fullDate = new Date();
+            let minutes = fullDate.getMinutes();
+            console.log(parseInt(minutes));
+            if (parseInt(minutes) < 10) {
+                minutes = "0" + minutes;
+            }
+            let newPost = {
+                poster: creator,
+                date: fullDate.getDate()+"/"+(fullDate.getMonth()+1) + "/" + fullDate.getFullYear(),
+                time: fullDate.getHours() + ":" + minutes,
+                msg: this.state.value
+            };
+            console.log(JSON.stringify(newPost));
+
+            // Posts the new 'Blurt' to the database.
+            fetch("/posts/post", {
+                method: "POST",
+                redirect: "follow",
+                headers: { 
+                    "Content-type": "application/json"
+                },
+                body: JSON.stringify(newPost)
+            }).then((response) => {
+                if (response.redirected) {
+                    window.location.href = response.url;
+                }
+                this.setState({loading: false});
+            });
+        } else alert("The Blurt must be between 10 to 500 characters long!");
     }
     render() {
         return (

@@ -12,14 +12,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Tompparella/webapp_practical_assignment.git"
+    "url": "git+https://github.com/Tompparella/blurter.git"
   },
   "author": "Tommi Kunnari",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Tompparella/webapp_practical_assignment/issues"
+    "url": "https://github.com/Tompparella/blurter/issues"
   },
-  "homepage": "https://github.com/Tompparella/webapp_practical_assignment#readme",
+  "homepage": "https://github.com/Tompparella/blurter#readme",
   "dependencies": {
     "axios": "^0.21.0",
     "bcrypt": "^5.0.0",
