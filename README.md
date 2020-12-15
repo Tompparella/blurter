@@ -34,8 +34,7 @@
     4.  Install the packages here also with 'npm install'
 
     Next, one must establish the secret tokens held in a hidden .env file. If you do have access to this file, move it to the root directory
-    and it should work properly. Otherwise, please refrain from trying to mess around with my database.
-
+    and it should work properly. The secret tokens are available in my github, since they are for grading the assignment.
     Once these steps have been taken, one should be able to begin development properly. The next commands have to be ran from the root directory.
 
     1.  The easiest way to start both the client- and serverside development environments is to run the command 'npm run dev'.
