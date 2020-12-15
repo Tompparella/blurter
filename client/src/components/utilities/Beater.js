@@ -8,6 +8,7 @@ const override = css`
     border-color: red;
 `;
 
+// The loading indicator that pops up when the user posts a new 'Blurt'.
 export class Beater extends React.Component {
     constructor(props) {
       super(props);

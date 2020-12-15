@@ -3,6 +3,7 @@ import Post from '../posts/post';
 import { Profile } from '../home/profile';
 import { PostForm } from '../utilities/PostInput';
 
+// The main form of the webpage.
 function App() {
   return (
     <div className="App">

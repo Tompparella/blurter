@@ -4,6 +4,7 @@ import React, { Component } from "react";
 import './post.css';
 import UserContext from "../../context/userContext";
 
+// Component that contains all 'Blurts' made by the webpages' users.
 class Post extends Component {
     static contextType = UserContext;
     constructor() {
@@ -13,40 +14,45 @@ class Post extends Component {
         }
     }
 
-    
+    // Function that allows users to delete their own posts.
     async deleteThisPost(currPost) {
-        if (currPost.creator === this.context.userData.user.userName) {
-            let posts = this.state.posts.filter(post => {
-                return post.id !== currPost.id;
-            });
-            this.setState({
-                posts: posts
-            });
+        // Checking if there is a user and if the user matches the posts' creator. Guests can't delete posts.
+            if ((this.context.userData.user !== undefined) && (currPost.creator === this.context.userData.user.userName)) {
+                let posts = this.state.posts.filter(post => {
+                    return post.id !== currPost.id;
+                });
+                this.setState({
+                    posts: posts
+                });
 
-            let postToBeDeleted = {
-                id: currPost.id
+                let postToBeDeleted = {
+                    id: currPost.id
+                }
+                try {
+                    await fetch("/posts/delete", {
+                        method: "POST",
+                        redirect: "follow",
+                        headers: { 
+                            "x-auth-token": this.context.userData.token,
+                            "Content-type": "application/json",
+                        },
+                        body: JSON.stringify(postToBeDeleted)
+                    }).then((response) => {
+                        console.log(response);
+                    })
+                    ;
+                } catch (error) {
+                    console.log(error);
+                }
+            } else if (this.context.userData.user === undefined) {
+                alert("Guest users can't delete posts. Please register or login to gain access to this feature.");
             }
-            try {
-                await fetch("/posts/delete", {
-                    method: "POST",
-                    redirect: "follow",
-                    headers: { 
-                        "x-auth-token": this.context.userData.token,
-                        "Content-type": "application/json",
-                    },
-                    body: JSON.stringify(postToBeDeleted)
-                }).then((response) => {
-                    console.log(response);
-                })
-                ;
-            } catch (error) {
-                console.log(error);
+             else {
+                alert("You can only delete your own posts!");
             }
-        } else {
-            alert("You can only delete your own posts!");
-        }
     }
 
+    // Finds all 'Blurts' saved in the database.
     componentDidMount() {
         fetch("/posts/find", {
             method: "GET"
@@ -71,20 +77,9 @@ class Post extends Component {
                         posts: this.state.posts.concat(post)
                     })
                 }
-                /*
-                this.state.id = data[0]._id;
-                this.state.creator = data[0].creator;
-                this.state.date = data[0].date;
-                this.state.time = data[0].time;
-                this.state.message = data[0].message;
-                */
+
             });
         });
-
-        /*
-        .then(res => res.json())
-        .then(post => this.setState({post}, () => console.log("Post fetched", post)));
-        */
     }
 
     render() {

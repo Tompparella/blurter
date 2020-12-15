@@ -6,7 +6,13 @@ const bcrypt = require("bcrypt");
 const { ObjectID, ObjectId } = require("mongodb");
 const jwt = require("jsonwebtoken");
 
-// Index handling
+/* 
+  Despite its name, this script handles all requests made to the server from the client.
+  I did this on just one script, since I feel that multiple controllers would have been sort of
+  useless due to the projects' relatively small size.
+*/
+
+// Index handling. Fetches the current users' information.
 
 exports.index = async function (req, res) {
   const user = await User.findById(req.user);
@@ -19,6 +25,7 @@ exports.index = async function (req, res) {
 
 // Post handling
 
+// Posts a new 'Blurt' to the database.
 exports.post = function(req, res, next) {
   sanitizeBody('*').trim().escape();
   var post = new Post( {
@@ -35,6 +42,7 @@ exports.post = function(req, res, next) {
   });
 };
 
+// Finds all 'Blurts' and returns them.
 exports.find = function (req, res, next) {
   Post.find().exec(function (err, posts) {
     if (err) {
@@ -45,6 +53,7 @@ exports.find = function (req, res, next) {
   });
 };
 
+// Deletes a certain post.
 exports.delete = function (req, res) {
   console.log();
   try {
@@ -60,6 +69,7 @@ exports.delete = function (req, res) {
 
 // User handling
 
+// Registers a new user.
 exports.register = async function (req, res) {
 
   try {
@@ -88,6 +98,7 @@ exports.register = async function (req, res) {
       return res.status(400).json({ msg: "That username is already taken!" });
     }
 
+    // Securing the password with a salt and hash.
     const salt = await bcrypt.genSalt();
     const hash = await bcrypt.hash(password, salt);
 
@@ -105,6 +116,7 @@ exports.register = async function (req, res) {
   }
 };
 
+// Logs the user in to their account.
 exports.login = async function (req, res) {
   try {
     const { userName, password } = req.body;
@@ -120,11 +132,13 @@ exports.login = async function (req, res) {
       return res.status(400).json({ msg: "No account with that username is registered!" });
     }
 
+    // Bcrypt is used to compare the hashed password in the database to the password given by the user.
     const matched = await bcrypt.compare(password, user.password);
     if (!matched) {
       return res.status(400).json({ msg: "Invalid credentials." });
     }
 
+    // Gives a login token to the local storage of the user for automatic authentication in the future.
     const token = jwt.sign({ id: user._id }, process.env.JWT_TOKEN);
     res.json({
       token,
@@ -139,6 +153,7 @@ exports.login = async function (req, res) {
   }
 }
 
+// Checks the client for login tokens.
 exports.tokenCheck = async function (req, res) {
   try {
     const token = req.header("x-auth-token");
@@ -159,21 +174,3 @@ exports.tokenCheck = async function (req, res) {
     res.status(500).json({ error: err.message });
   }
 }
-/*
-exports.userCheck = function (req,res) {
-  const user = User.findById(req.user);
-  res.json({
-    userName: user.userName,
-    id: user._id
-  });
-};
-*/
-/*
-exports.index = function (req, res, next) {
-  Game.findOne({gameId: 1}).exec(function (err, game) {
-    if (err) {
-      return next(err);
-    }
-  });
-};
-*/

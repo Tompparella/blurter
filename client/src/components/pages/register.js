@@ -3,6 +3,7 @@ import UserContext from "../../context/userContext";
 import { useHistory } from "react-router-dom";
 import "./authentication.css";
 
+// The register page.
 export default function Register() {
 
     const [userName, setUserName] = useState();
@@ -18,6 +19,7 @@ export default function Register() {
         e.preventDefault();
 
         try {
+            // Lets the user register a new account. In case of errors displays these as alerts.
             let newUser = { userName, motto, password, passwordCheck };
             let regRes = await fetch("/users/register", {
                 method: "POST",
@@ -36,6 +38,7 @@ export default function Register() {
                 return;
             }
 
+            // Logs the user in after registering automatically.
             let logUser = { userName, password };
             const loginRes = await fetch("/users/login", {
                 method: "POST",

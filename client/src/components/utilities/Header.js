@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import AuthOptions from "./AuthOptions";
 import './Header.css';
 
+// The header that hover above each page. Has a link to the main page labeled 'Home page'.
 export default class Home extends Component {
     render(){
         return(

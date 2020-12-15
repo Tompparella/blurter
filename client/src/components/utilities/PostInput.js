@@ -10,6 +10,7 @@ const override = css`
     border-color: red;
 `;
 
+// The component that allows users to make new 'Blurts'. 
 export class PostForm extends Component {
     static contextType = UserContext;
 
@@ -27,6 +28,7 @@ export class PostForm extends Component {
         this.setState({value: event.target.value});
     }
 
+    // Submits the created 'Blurt'. If the user's not logged in, gives the post default information as Guest user.
     handleSubmit(event) {
         let creator = "Guest";
         if (this.context.userData.user !== undefined) {
@@ -47,6 +49,7 @@ export class PostForm extends Component {
         };
         console.log(JSON.stringify(newPost));
 
+        // Posts the new 'Blurt' to the database.
         fetch("/posts/post", {
             method: "POST",
             redirect: "follow",

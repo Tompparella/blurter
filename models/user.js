@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 var Schema = mongoose.Schema;
 
+// Model for the data of the user.
 const UserSchema = new Schema({
     userName: {
         unique: true,

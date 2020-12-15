@@ -1,72 +1,59 @@
-# Getting Started with Create React App
+// PROJECT DESCRIPTION //
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+    Blurter is a simple blogging web application, that allows users to create either anonymous posts as a Guest user, or to register their
+    own account and create posts with their own name and motto. Authentication is done via webtokens and securely hashed and salted passwords,
+    which means that the site is fairly secure for the user.
 
-## Available Scripts
+    This is a full-stack application made with MERN-stack, that uses MongoDataBase, Express.js for back-end, React.js for front-end, and Node.js
+    for handling packages.
 
-In the project directory, you can run:
+    This webapp was created as a final project assignment for a university course about developing web applications.
 
-### `npm start`
+// HOW TO USE //
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+    Use of the webapp is quite easy. Posts can be made on-the-go as a Guest- user. These however hold no personalized data and can't be deleted
+    if not for site admins from the database.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+    Clients can also register as a user, which allows them to assign themselves a unique username and a motto that shows in the main page. The username
+    also shows on each of the 'Blurts' made by the user. Passwords are salted and hashed, and verification tokens and database url's are kept in a secret
+    file, so data breaches are unlikely.
 
-### `npm test`
+    Users can also naturally login to their user on the login page, though this is rarely needed since the user is assigned a unique webtoken that automatically
+    identifies the user and logs them in if they have the correct token in their local storage.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+    That's quite about it for usage instructions! In case of errors or misuses, alerts are shown that display the cause of errors. If you find an unhandled error or
+    bug, please give me some feedback either through github or email!
 
-### `npm run build`
+// STARTING DEVELOPMENT //
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+    In order to begin the development process, one must first install the required packages for both the client- and serverside.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+    1.  Navigate to the project's root directory.
+    2.  Run cmd command 'npm install' to install the server packages.
+    3.  After complete, navigate to the client folder: 'cd client'
+    4.  Install the packages here also with 'npm install'
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+    Next, one must establish the secret tokens held in a hidden .env file. If you do have access to this file, move it to the root directory
+    and it should work properly. Otherwise, please refrain from trying to mess around with my database.
 
-### `npm run eject`
+    Once these steps have been taken, one should be able to begin development properly. The next commands have to be ran from the root directory.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+    1.  The easiest way to start both the client- and serverside development environments is to run the command 'npm run dev'.
+        This however doesn't always work, since there is a problem with using the 'concurrently'-package. If this doesn't work, continue to
+        steps 2 and 3.
+    2.  If 1. didn't work, run the next two commands in seperate consoles to create nodes yourself:
+        'npm run start'
+        'npm run client'
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+// CREDITS //
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+All code (except automatically generated files due to create-react-app) is written by me.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+Tommi Kunnari
+15.12.2020
+tommi.kunnari@hotmail.com
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+LinkedIn: https://www.linkedin.com/in/tommi-kristian-kunnari-992101183/
+GitHub: https://github.com/Tompparella
 
 All credit for the background image used goes to pngtree.com user piikcoro: https://pngtree.com/piikcoro_8560404?type=2

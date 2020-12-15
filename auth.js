@@ -1,5 +1,6 @@
 const jwt = require("jsonwebtoken");
 
+// Authorizes the users token based on the servers' secret JWT_TOKEN.
 const auth = (req, res, next) => {
 
     try {

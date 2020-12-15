@@ -3,6 +3,7 @@ import './profile.css';
 import pic from '../../pictures/default.jpg';
 import UserContext from "../../context/userContext";
 
+// A Component that displays the username and motto of the current user. Also holds an image, though this feature is yet to be completed.
 export class Profile extends Component {
     static contextType = UserContext;
     constructor() {

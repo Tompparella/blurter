@@ -3,6 +3,7 @@ import UserContext from "../../context/userContext";
 import { useHistory } from "react-router-dom";
 import "./authentication.css";
 
+// The login page.
 export default function Login() {
 
     const [userName, setUserName] = useState();
@@ -16,6 +17,7 @@ export default function Login() {
         e.preventDefault();
 
         try {
+            // Lets the user login to their account with the correct username and password. In case of errors, displays these as alerts.
             let logUser = { userName, password };
             const loginRes = await fetch("/users/login", {
                 method: "POST",

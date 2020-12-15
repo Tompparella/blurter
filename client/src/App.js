@@ -6,6 +6,7 @@ import Header from "./components/utilities/Header";
 import React, { useState, useEffect } from 'react';
 import UserContext from "./context/userContext";
 
+// The main function that controls the webpage. Gives each page UserData context and provides a token authentication method.
 function App() {
 
   const [userData, setUserData] = useState({
